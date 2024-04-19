@@ -3,7 +3,7 @@ import NxWelcome from './nx-welcome';
 export function App() {
   return (
     <div>
-      <NxWelcome title="vperform-monorepo" />
+      <NxWelcome title="vperform-react" />
     </div>
   );
 }

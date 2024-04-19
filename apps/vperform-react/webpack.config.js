@@ -4,7 +4,7 @@ const { join } = require('path');
 
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/vperform-monorepo'),
+    path: join(__dirname, '../../dist/apps/vperform-react'),
   },
   devServer: {
     port: 4200,

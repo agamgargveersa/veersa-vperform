@@ -1,9 +1,0 @@
-{
-  "name": "vperform-monorepo",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/vperform-monorepo/src",
-  "projectType": "application",
-  "tags": [],
-  "// targets": "to see all targets run: nx show project vperform-monorepo --web",
-  "targets": {}
-}
