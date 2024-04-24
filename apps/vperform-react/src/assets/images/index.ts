@@ -1,6 +1,8 @@
 import favIcon from "./favicon.png";
-//import {logoVeersa,appraisalCycle,appraiseeView,home,showNav,settings,performance,collapse,logout,fullVeersaLogo} from '../assets/images'
-
+import vector from './vector.svg';
+import confirm from './confirm.svg';
+import cross from './cross.svg';
+import remove from './remove.svg';
 import logoVeersa from './LogoVeersa.svg'
 import appraisalCycle from './AppraisalCycle.svg';
 import appraiseeView from './AppraiseeView.svg'
@@ -16,9 +18,11 @@ import noRecordsIcon from './noRecords.svg'
 import manageAppraisee from './manageAppraisee.svg'
 import editIcon from './edit.svg'
 import deleteIcon from './delete.svg'
+
 import closeIcon from './close.svg'
 import setting1 from './settings1.svg'
 import searchIcon from './search.svg'
+
 export{
     favIcon,
     appraisalCycle,
@@ -38,5 +42,7 @@ export{
     sampleProfilePic,
     noRecordsIcon,
     setting1,
-    searchIcon
+    searchIcon,
+    vector,confirm,cross,remove
+
 }
