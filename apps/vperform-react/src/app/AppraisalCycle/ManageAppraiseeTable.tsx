@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { filterIcon, membersIcon, sampleProfilePic } from '../assets/images';
+import { filterIcon, membersIcon, sampleProfilePic } from '../../assets/images';
 import SearchInput from 'apps/ui-lib/src/lib/InputSearch';
 
 const ManageAppraiseeList: React.FC = () => {

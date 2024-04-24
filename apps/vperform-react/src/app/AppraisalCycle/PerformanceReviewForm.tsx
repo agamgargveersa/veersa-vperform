@@ -1,6 +1,8 @@
-import React from 'react'
+import { ToggleSwitch } from 'apps/ui-lib/src/lib'
+import React, { useState } from 'react'
 
 const PerformanceReviewForm = () => {
+  const [isChecked,setIsChecked] = useState<boolean>(false);
   return (
     <div>
       <div className='gap-1'>
@@ -51,7 +53,7 @@ const PerformanceReviewForm = () => {
         <div className=''> {/* use common input */}
 
         </div>
-        
+        <div className='p-2 w-1/2'><ToggleSwitch isChecked={isChecked} setIsChecked={setIsChecked} title={'my title for togogle'} /></div>
       </div>
     </div>
   )

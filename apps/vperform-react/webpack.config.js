@@ -7,7 +7,7 @@ module.exports = {
     path: join(__dirname, '../../dist/apps/vperform-react'),
   },
   devServer: {
-    historyApiFallback: true, //for reloading problem
+    historyApiFallback: true, //for reloading problem on routes other than 4200
     port: 4200,
   },
   plugins: [

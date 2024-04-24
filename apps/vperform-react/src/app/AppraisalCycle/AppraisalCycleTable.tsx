@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { appraisalCycle, deleteIcon, editIcon, manageAppraisee, noRecordsIcon, setting1, settings } from '../assets/images';
+import { appraisalCycle, deleteIcon, editIcon, manageAppraisee, noRecordsIcon, setting1, settings } from '../../assets/images';
 import { useNavigate } from 'react-router-dom';
 import {  Modal, PageHeader, SearchInput, TableHeader } from 'apps/ui-lib/src/lib';
 import PerformanceReviewForm from './PerformanceReviewForm';
@@ -7,7 +7,7 @@ import PerformanceReviewForm from './PerformanceReviewForm';
 interface Props{ // for navbar
   setSelectedOption:Function
 }
-const AppraisalCycle = ({setSelectedOption}:Props) => {
+const AppraisalCycleTable = ({setSelectedOption}:Props) => {
     const data = [{
         nameOfAppraisal:'Appraisal_2024_2',
         startDate:'20-June-2024',
@@ -217,4 +217,4 @@ interface Props{
   );
 }
 
-export default AppraisalCycle;
+export default AppraisalCycleTable;
