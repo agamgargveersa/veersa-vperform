@@ -7,7 +7,7 @@ interface PageHeader{
 
 const PageHeader = ({title,icon}:PageHeader) => {
   return (
-    <div className='rounded-lg bg-theme-blue flex flex-row  items-center justify-start font-medium'>
+    <div className=' rounded-lg bg-theme-blue flex flex-row  items-center justify-start font-medium'>
       <div className='p-2'><img  src={icon} /></div>
       <div className='p-2 text-white'>{title}</div>
     </div>

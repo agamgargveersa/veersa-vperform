@@ -77,7 +77,7 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
                 
                 <ul className="space-y-2 font-medium flex flex-col items-start mt-10">
                     {navElements.map((item,index)=>(
-                        <li key={index} className='p-1'>
+                        <li key={index} className='p-1 cursor-default'>
                             <p onClick={()=>{nav(item.to,item.title)}} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <span>{item.title}</span>
                             
