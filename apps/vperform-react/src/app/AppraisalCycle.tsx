@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { appraisalCycle, deleteIcon, editIcon, manageAppraisee, noRecordsIcon, setting1, settings } from '../assets/images';
 import { useNavigate } from 'react-router-dom';
 import {  Modal, PageHeader, SearchInput, TableHeader } from 'apps/ui-lib/src/lib';
+import PerformanceReviewForm from './PerformanceReviewForm';
 
 interface Props{ // for navbar
   setSelectedOption:Function
@@ -145,7 +146,8 @@ interface Props{
     }
   ]
 
-  const [showModal,setShowModal] = useState<boolean>(false);
+  const [showConfigAppraisalModal,setShowConfigAppraisalModal] = useState<boolean>(false);
+  const [showPerformanceFormModal,setShowPerformanceFormModal] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const showManageAppraisee =  () => {
@@ -158,9 +160,10 @@ interface Props{
     <div className='p-1 overflow-hidden h-[550px]'>
       <div className='flex flex-row items-center justify-between w-full py-1'>
         <SearchInput />
-        <div onClick={()=>setShowModal(true)} className='p-2 border-[2px] rounded-md border-theme-blue flex flex-row items-center'><img className=' pr-1' src={setting1} /><button>Configure Appraisal Cycle</button></div>
+        <div onClick={()=>setShowConfigAppraisalModal(true)} className='p-2 border-[2px] rounded-md border-theme-blue flex flex-row items-center'><img className=' pr-1' src={setting1} /><button>Configure Appraisal Cycle</button></div>
       </div>
-      <Modal innerJsx={<PageHeader icon={appraisalCycle} title={'mdgkm'} />} showModal = {showModal} setShowModal={setShowModal} logo={appraisalCycle} title='Configure Appraisal Cycle' content='frg' action='Done' />
+      <Modal innerJsx={<PageHeader icon={appraisalCycle} title={'mdgkm'} />} showModal = {showConfigAppraisalModal} setShowModal={setShowConfigAppraisalModal} logo={appraisalCycle} title='Configure Appraisal Cycle' content='frg' action='Done' />
+      <Modal innerJsx = {<PerformanceReviewForm/>} logo={appraisalCycle} title='Performance Review Form Details' content='' action='Done' setShowModal={setShowPerformanceFormModal} showModal={showPerformanceFormModal}/>
       <div className='h-[500px] overflow-auto'>
         <table className="min-w-full divide-y divide-gray-200 ">
           <thead className="bg-custom-table-header">
@@ -188,7 +191,7 @@ interface Props{
           {data.length!==7?<tbody className="bg-white divide-y divide-gray-200 ">
             {data.map((item,index)=>(
               <tr className=' bg-custom-table-row ' key={index}>
-                <td className="px-6 py-4 whitespace-nowrap underline text-theme-blue">{item.nameOfAppraisal}</td>
+                <td onClick={()=>setShowPerformanceFormModal(true)} className=" cursor-pointer px-6 py-4 whitespace-nowrap underline text-theme-blue">{item.nameOfAppraisal}</td>
                 <td onClick={()=>{showManageAppraisee()}} className="px-6 py-4 whitespace-nowrap flex flex-row justify-center"><img src={manageAppraisee} /></td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.startDate}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.endDate}</td>

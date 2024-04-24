@@ -18,13 +18,15 @@ import noRecordsIcon from './noRecords.svg'
 import manageAppraisee from './manageAppraisee.svg'
 import editIcon from './edit.svg'
 import deleteIcon from './delete.svg'
-
+import membersIcon from './Members.svg'
 import closeIcon from './close.svg'
 import setting1 from './settings1.svg'
 import searchIcon from './search.svg'
+import filterIcon from './Filter.svg'
 
 export{
     favIcon,
+    filterIcon,
     appraisalCycle,
     appraiseeView,
     editIcon,
@@ -43,6 +45,10 @@ export{
     noRecordsIcon,
     setting1,
     searchIcon,
-    vector,confirm,cross,remove
+    vector,
+    confirm,
+    cross,
+    remove,
+    membersIcon
 
 }

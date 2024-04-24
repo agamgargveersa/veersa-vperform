@@ -31,9 +31,9 @@ const Modal: FC<ModalProps> = ({
                     id="static-modal"
                     data-modal-backdrop="static"
                     aria-hidden="true"
-                    className="fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+                    className="fixed top-0 h-full  right-0  left-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
                 >
-                    <div className='relative w-full max-w-3xl h-3/4  bg-white rounded-md flex flex-col'>
+                    <div className='relative w-full  max-w-4xl h-5/6  bg-white rounded-md flex flex-col'>
                         {/* header */}
                         <div className='border-b border-slate-300 w-full p-2'>
                             <div className='bg-theme-blue w-full flex p-4 rounded-md border-spacing-2 border-gray-400 justify-between items-center'>
