@@ -186,7 +186,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
                 <td className="px-6 py-4 whitespace-nowrap">{item.endDate}</td>
                 <td className="px-4 py-2 whitespace-nowrap "><div className='rounded-md px-2 py-2 text-[#CFA100] font-medium bg-[#FFFBDB]'>Pending</div></td>
                 <td className="px-6 py-4 gap-6 whitespace-nowrap flex flex-row items-center">
-                  <img className=' bg-white p-1' src={editIcon} />
+                  <img onClick={()=>setShowConfigAppraisalModal(true)} className=' bg-white p-1' src={editIcon} />
                   <img onClick={()=>setShowPopup(true)} className=' bg-white p-1' src={deleteIcon}/>
                 </td>
 
