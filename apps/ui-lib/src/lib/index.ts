@@ -3,7 +3,10 @@ import ConfirmationPopUp from "./ConfirmationPopUp"
 import PageHeader from "./PageHeader";
 import TableHeader from "./Table";
 import Modal from "./Modal";
+import SearchInput from "./InputSearch";
+import ToggleSwitch from './ToggleSwitch'
     
+
 
 
 export {
@@ -11,5 +14,7 @@ export {
     TableHeader,
     Modal,
     PageTemplate,
-    ConfirmationPopUp
+    ConfirmationPopUp,
+    SearchInput,
+    ToggleSwitch
 }
