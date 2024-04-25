@@ -23,6 +23,7 @@ import closeIcon from './close.svg'
 import setting1 from './settings1.svg'
 import searchIcon from './search.svg'
 import filterIcon from './Filter.svg'
+import confirmIcon from './Confirmation.svg'
 
 export{
     favIcon,
@@ -41,6 +42,7 @@ export{
     logout,
     logoVeersa,
     fullVeersaLogo,
+    confirmIcon,
     sampleProfilePic,
     noRecordsIcon,
     setting1,

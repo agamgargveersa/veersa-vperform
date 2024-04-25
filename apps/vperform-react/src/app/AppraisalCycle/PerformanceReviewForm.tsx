@@ -53,7 +53,38 @@ const PerformanceReviewForm = () => {
         <div className=''> {/* use common input */}
 
         </div>
-        <div className='p-2 w-1/2'><ToggleSwitch isChecked={isChecked} setIsChecked={setIsChecked} title={'my title for togogle'} /></div>
+        <div className='text-theme-blue'>Add KRA</div>
+        {[1,2,3,4].map((item,index)=>(
+          <div className=' my-4 rounded-lg border-[1px] border-gray-200 p-5 gap-3 flex flex-col items-start justify-evenly'>
+          <div className='flex flex-row items-center justify-start w-full'>
+            <div className='py-2 w-1/2'><ToggleSwitch isChecked={isChecked} setIsChecked={setIsChecked} title={'KRA Name'} /></div>
+            <label className="py-2 ml-6 inline-flex items-center">
+              <input
+                type="checkbox"
+                className="form-checkbox h-5 w-5 text-indigo-600"
+                
+              />
+              <span className="ml-2 text-gray-700">Show Goals against KRA</span>
+            </label>
+          </div>
+          <div className='bg-custom-header w-full'>
+            {/* <select className='bg-custom-table-header w-full'>
+              <option><p>View Goals</p></option>
+            </select> */}
+            DropDown
+          </div>
+          <div className='p-1 rounded-lg border-[1px] border-gray-200'>
+            <p className='p-1'>​It reflects your performance on the various Projects (one/ multiple) you have worked on in the First Half of Year 2023.
+              It is all about managing work expectations.It covers criteria like the quality of delivery,
+              delivery deadlines, no. of defects, etc.- all related to the project/ assignment you are expected to be working on.
+              You should mention the name of the project/s you have worked on in the Year 2023 with your Job Title and achievements in the project.
+            </p>
+          </div>
+          <div className='w-full'>add common input component</div>
+          </div>
+        ))}
+        
+        
       </div>
     </div>
   )

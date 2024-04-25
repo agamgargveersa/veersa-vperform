@@ -8,7 +8,7 @@ interface Props{
 }
 const Navbar = ({selectedOption,setSelectedOption}:Props) => {
     const navigate = useNavigate();
-
+    const currentPath = window.location.pathname;
     function nav(to:String,title:String):void{
         setSelectedOption(to);
         navigate(to as To);
@@ -32,12 +32,12 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
       ]
 
       useEffect(()=>{
-        const currentPath = window.location.pathname;
+        
         const segments = currentPath?.split('/');
         const lastSegment = (segments[segments?.length - 1]);
         const currentPage =  navElements.find(obj => obj.to === lastSegment)?.to
         setSelectedOption(currentPage)
-      },[selectedOption])
+      },[selectedOption,currentPath])
   return (
     
     <div className='fixed left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>

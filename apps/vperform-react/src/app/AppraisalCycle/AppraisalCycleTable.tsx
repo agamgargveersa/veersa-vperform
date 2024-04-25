@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { appraisalCycle, deleteIcon, editIcon, manageAppraisee, noRecordsIcon, setting1, settings } from '../../assets/images';
 import { useNavigate } from 'react-router-dom';
-import {  Modal, PageHeader, SearchInput, TableHeader } from 'apps/ui-lib/src/lib';
+import {  ConfirmationPopUp, Modal, PageHeader, SearchInput, TableHeader } from 'apps/ui-lib/src/lib';
 import PerformanceReviewForm from './PerformanceReviewForm';
 
 interface Props{ 
@@ -135,6 +135,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
 
   const [showConfigAppraisalModal,setShowConfigAppraisalModal] = useState<boolean>(false);
   const [showPerformanceFormModal,setShowPerformanceFormModal] = useState<boolean>(false);
+  const [showPopup,setShowPopup]  = useState<boolean>(false)
   const navigate = useNavigate();
 
   const showManageAppraisee =  () => {
@@ -151,6 +152,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
       </div>
       <Modal innerJsx={<PageHeader icon={appraisalCycle} title={'mdgkm'} />} showModal = {showConfigAppraisalModal} setShowModal={setShowConfigAppraisalModal} logo={appraisalCycle} title='Configure Appraisal Cycle' content='frg' action='Done' />
       <Modal innerJsx = {<PerformanceReviewForm/>} logo={appraisalCycle} title='Performance Review Form Details' content='' action='Done' setShowModal={setShowPerformanceFormModal} showModal={showPerformanceFormModal}/>
+      <ConfirmationPopUp showPopup={showPopup} setShowPopup={setShowPopup} />
       <div className='h-[500px] overflow-auto'>
         <table className="min-w-full divide-y divide-gray-200 ">
           <thead className="bg-custom-table-header">
@@ -185,7 +187,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
                 <td className="px-4 py-2 whitespace-nowrap "><div className='rounded-md px-2 py-2 text-[#CFA100] font-medium bg-[#FFFBDB]'>Pending</div></td>
                 <td className="px-6 py-4 gap-6 whitespace-nowrap flex flex-row items-center">
                   <img className=' bg-white p-1' src={editIcon} />
-                  <img className=' bg-white p-1' src={deleteIcon}/>
+                  <img onClick={()=>setShowPopup(true)} className=' bg-white p-1' src={deleteIcon}/>
                 </td>
 
               </tr>
