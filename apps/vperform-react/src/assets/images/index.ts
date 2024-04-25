@@ -18,15 +18,21 @@ import noRecordsIcon from './noRecords.svg'
 import manageAppraisee from './manageAppraisee.svg'
 import editIcon from './edit.svg'
 import deleteIcon from './delete.svg'
-
-
+import membersIcon from './Members.svg'
+import closeIcon from './close.svg'
+import setting1 from './settings1.svg'
+import searchIcon from './search.svg'
+import filterIcon from './Filter.svg'
+import confirmIcon from './Confirmation.svg'
 
 export{
     favIcon,
+    filterIcon,
     appraisalCycle,
     appraiseeView,
     editIcon,
     deleteIcon,
+    closeIcon,
     home,
     showNav,
     settings,
@@ -36,7 +42,15 @@ export{
     logout,
     logoVeersa,
     fullVeersaLogo,
+    confirmIcon,
     sampleProfilePic,
     noRecordsIcon,
-    vector,confirm,cross,remove
+    setting1,
+    searchIcon,
+    vector,
+    confirm,
+    cross,
+    remove,
+    membersIcon
+
 }

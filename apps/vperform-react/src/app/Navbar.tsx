@@ -8,7 +8,7 @@ interface Props{
 }
 const Navbar = ({selectedOption,setSelectedOption}:Props) => {
     const navigate = useNavigate();
-
+    const currentPath = window.location.pathname;
     function nav(to:String,title:String):void{
         setSelectedOption(to);
         navigate(to as To);
@@ -32,15 +32,15 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
       ]
 
       useEffect(()=>{
-        const currentPath = window.location.pathname;
+        
         const segments = currentPath?.split('/');
         const lastSegment = (segments[segments?.length - 1]);
         const currentPage =  navElements.find(obj => obj.to === lastSegment)?.to
         setSelectedOption(currentPage)
-      },[selectedOption])
+      },[selectedOption,currentPath])
   return (
     
-    <div className='fixed  top-0 left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>
+    <div className='fixed left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>
         <aside id="separator-sidebar" className="bg-theme-blue fixed top-0 left-1 rounded-lg  w-20 h-screen  block " aria-label="Sidebar">
             <div className='p-3 border-b border-gray-200 w-full flex items-center justify-center'><img src={logoVeersa}/></div>
             <div className="h-full px-3 py-4  ">
@@ -77,7 +77,7 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
                 
                 <ul className="space-y-2 font-medium flex flex-col items-start mt-10">
                     {navElements.map((item,index)=>(
-                        <li key={index} className='p-1'>
+                        <li key={index} className='p-1 cursor-default'>
                             <p onClick={()=>{nav(item.to,item.title)}} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <span>{item.title}</span>
                             
