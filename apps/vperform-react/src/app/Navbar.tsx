@@ -40,7 +40,7 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
       },[selectedOption])
   return (
     
-    <div className='fixed  top-0 left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>
+    <div className='fixed left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>
         <aside id="separator-sidebar" className="bg-theme-blue fixed top-0 left-1 rounded-lg  w-20 h-screen  block " aria-label="Sidebar">
             <div className='p-3 border-b border-gray-200 w-full flex items-center justify-center'><img src={logoVeersa}/></div>
             <div className="h-full px-3 py-4  ">

@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import {  Modal, PageHeader, SearchInput, TableHeader } from 'apps/ui-lib/src/lib';
 import PerformanceReviewForm from './PerformanceReviewForm';
 
-interface Props{ // for navbar
-  setSelectedOption:Function
+interface Props{ 
+  setSelectedOption:Function,// for navbar
+  setManageAppraiseeListClicked:Function // for conditional rendering of appraisal cycle and manage appraisee list
 }
-const AppraisalCycleTable = ({setSelectedOption}:Props) => {
+const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:Props) => {
     const data = [{
         nameOfAppraisal:'Appraisal_2024_2',
         startDate:'20-June-2024',
@@ -57,21 +58,7 @@ const AppraisalCycleTable = ({setSelectedOption}:Props) => {
   endDate:'20-June-2024',
   status: 'pending'
 },]
-interface Tableheader{
-  headerName:String,
-  fontStyle:String,
-  fontColour:String,
-  fontSize:String,
-  fontWeight:String,
-  paddingX:String,
-  paddingY:String,
-  align:String,
-  letterSpacing:String
-  
-}
-interface Props{
-  tableHead:Array<Tableheader>
-}
+
   const tableHead = [
     {
       headerName:"NAME OF THE APPRAISAL",
@@ -151,7 +138,7 @@ interface Props{
   const navigate = useNavigate();
 
   const showManageAppraisee =  () => {
-    navigate('/manageappraiseelist');
+    setManageAppraiseeListClicked(true);
   }
 
   

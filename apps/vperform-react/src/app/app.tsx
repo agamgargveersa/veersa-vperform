@@ -14,7 +14,7 @@ export function App() {
 
   const [selectedOption,setSelectedOption] = useState<String>("")
   return (
-    <div>
+    <div className='p-1'>
 
       
       <BrowserRouter>
@@ -22,12 +22,6 @@ export function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='appraisalcycle' element={<AppraisalCycle setSelectedOption={setSelectedOption} />}/>
-          {/* render conditionally with appraisal cycle table */}
-          <Route path='manageappraiseelist' 
-            element = {<div className='ml-[84px] p-1'>
-              <PageHeader title={"Appraisal Cycle"} icon={appraisalCycle} />
-              <ManageAppraiseeList /></div>} 
-          />
           <Route path='appraiseeview' element={<AppraiseeView/>} />
           <Route path='performanceModule' element={<PerformanceModule />} />
           <Route path='settings' element={<Settings/>} />
