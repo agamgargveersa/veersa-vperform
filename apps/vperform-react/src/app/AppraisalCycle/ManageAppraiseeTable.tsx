@@ -45,7 +45,7 @@ const ManageAppraiseeList = ({setManageAppraiseeListClicked}:Props) => {
   };
 
   return (
-    <div className='p-1 overflow-hidden h-[550px]'>
+    <div className='p-1 overflow-hidden h-[34.375rem]'>
       <div className='flex flex-row items-center justify-between w-full py-1'>
         <div className='p-1 flex flex-row items-center justify-start gap-2'>
           <div>Filter by</div>
@@ -60,7 +60,7 @@ const ManageAppraiseeList = ({setManageAppraiseeListClicked}:Props) => {
         </div>
         
       </div>
-      <div className='h-[415px] overflow-auto'>
+      <div className='h-[25.938rem] overflow-auto'>
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-custom-table-header">
             <tr>
@@ -102,7 +102,7 @@ const ManageAppraiseeList = ({setManageAppraiseeListClicked}:Props) => {
           </tbody>
         </table>
       </div>
-      <div className=' h-[50px] mt-1 border-t-[1px] border-gray-200 w-full  flex flex-row items-center justify-end'>
+      <div className=' h-[3.125rem] mt-1 border-t-[0.063rem] border-gray-200 w-full  flex flex-row items-center justify-end'>
         <button className='text-white bg-theme-blue rounded-md px-5 py-2' onClick={()=>setManageAppraiseeListClicked(false)}>Done</button>
       </div>
     </div>

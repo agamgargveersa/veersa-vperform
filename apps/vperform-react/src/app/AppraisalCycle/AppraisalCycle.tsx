@@ -11,7 +11,7 @@ interface Props{
 const AppraisalCycle = ({setSelectedOption}:Props) => {
   const [manageAppraiseeListClicked,setManageAppraiseeListClicked] = useState<boolean>(false);
   return (
-    <div className='ml-[84px] p-1 overflow-hidden h-[570px]'>
+    <div className='ml-[5.25rem] p-1 overflow-hidden h-[35.625rem]'>
         <PageHeader title={manageAppraiseeListClicked?'Manage Appraisee List':'Appraisal Cycle'} icon={appraisalCycle} />
         {!manageAppraiseeListClicked?<AppraisalCycleTable setManageAppraiseeListClicked={setManageAppraiseeListClicked}  setSelectedOption={setSelectedOption}/>
         :<ManageAppraiseeList setManageAppraiseeListClicked={setManageAppraiseeListClicked}/>}
