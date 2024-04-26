@@ -26,9 +26,10 @@ import filterIcon from './Filter.svg'
 import confirmIcon from './Confirmation.svg'
 import downArrow from './downArrow.svg' 
 import calendarIcon from './calendarIcon.svg'
-
+import options from './options.svg'
 export{
     favIcon,
+    options,
     filterIcon,
     appraisalCycle,
     appraiseeView,

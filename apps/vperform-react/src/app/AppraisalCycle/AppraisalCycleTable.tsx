@@ -4,12 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import {  ConfirmationPopUp, Modal, PageHeader, SearchInput, TableHeader } from 'apps/ui-lib/src/lib';
 import PerformanceReviewForm from './PerformanceReviewForm';
 
+interface p{
+  nameOfAppraisal:String,
+  startDate:String,
+  endDate:String,
+  status:String,
+}
+
 interface Props{ 
   setSelectedOption:Function,// for navbar
   setManageAppraiseeListClicked:Function // for conditional rendering of appraisal cycle and manage appraisee list
 }
 const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:Props) => {
-    const data = [{
+  //const data : Array<p> = []  
+  const data = [{
         nameOfAppraisal:'Appraisal_2024_2',
         startDate:'20-June-2024',
         endDate:'20-June-2024',
@@ -51,6 +59,24 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
   startDate:'20-June-2024',
   endDate:'20-June-2024',
   status: 'pending'
+},
+{
+  nameOfAppraisal:'Samarth',
+  startDate:'20-June-2024',
+  endDate:'20-June-2024',
+  status: 'pending'
+},
+{
+  nameOfAppraisal:'Samarth',
+  startDate:'20-June-2024',
+  endDate:'20-June-2024',
+  status: 'pending'
+},
+{
+  nameOfAppraisal:'Samarth',
+  startDate:'20-June-2024',
+  endDate:'20-June-2024',
+  status: 'pending'
 }]
 
   
@@ -75,7 +101,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
       <Modal innerJsx={<PageHeader icon={appraisalCycle} title={'mdgkm'} />} showModal = {showConfigAppraisalModal} setShowModal={setShowConfigAppraisalModal} logo={appraisalCycle} title='Configure Appraisal Cycle' content='frg' action='Done' />
       <Modal innerJsx = {<PerformanceReviewForm/>} logo={appraisalCycle} title='Performance Review Form Details' content='' action='Done' setShowModal={setShowPerformanceFormModal} showModal={showPerformanceFormModal}/>
       <ConfirmationPopUp showPopup={showPopup} setShowPopup={setShowPopup} />
-      <div className={`h-${data.length===8?'h-fit':'[31.25rem]'} overflow-auto`}>
+      <div className={`h-${data.length===0?'fit':'[31.25rem]'}  overflow-auto`}>
         <table className="min-w-full divide-y divide-gray-200 ">
           <thead className="bg-custom-table-header">
             <tr >
@@ -99,7 +125,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
               </th>
             </tr>
           </thead>
-          {data.length!==8?<tbody className="bg-white divide-y divide-gray-200 ">
+          {data.length!==0?<tbody className="bg-white divide-y divide-gray-200 ">
             {data.map((item,index)=>(
               <tr className=' bg-custom-table-row ' key={index}>
                 <td onClick={()=>setShowPerformanceFormModal(true)} className=" cursor-pointer px-6 py-4 whitespace-nowrap underline text-theme-blue">{item.nameOfAppraisal}</td>
@@ -119,7 +145,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
           </tbody>:null}
         </table>
       </div>
-        {data.length===8?<div className='text-center mt-28 flex h-20 flex-row items-center justify-center'>
+        {data.length===0?<div className='text-center mt-28 flex h-20 flex-row items-center justify-center'>
           <span className='h-12 w-12 rounded-full flex flex-row items-center justify-center  bg-slate-200'><img className='h-8 w-8 rounded-lg  ' src={noRecordsIcon} /></span>
           <span>No records available, configure appraisal cycle to initiate the process</span>
         </div>:null}

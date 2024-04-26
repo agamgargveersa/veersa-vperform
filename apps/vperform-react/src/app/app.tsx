@@ -11,7 +11,7 @@ export function App() {
 
   const [selectedOption,setSelectedOption] = useState<String>("")
   return (
-    <div className='p-1'>
+    <div className=''>
 
       
       <BrowserRouter>

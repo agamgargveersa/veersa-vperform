@@ -143,7 +143,7 @@ const PerformanceReviewForm = () => {
             
               
               <div className='w-1/3'>
-                <DropdownWithLabel label="Self Rating" onChange={()=>console.log('gg')} 
+                <DropdownWithLabel label="" onChange={()=>console.log('gg')} 
                             options={dropdownList} width="w-full" defaultValue="Select" />
               </div>
           
