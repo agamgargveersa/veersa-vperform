@@ -5,6 +5,8 @@ import TableHeader from "./Table";
 import Modal from "./Modal";
 import SearchInput from "./InputSearch";
 import ToggleSwitch from './ToggleSwitch'
+import FilterComponent from "./FilterComponent";
+
     
 
 
@@ -15,6 +17,9 @@ export {
     Modal,
     PageTemplate,
     ConfirmationPopUp,
+
     SearchInput,
-    ToggleSwitch
+    ToggleSwitch,
+    FilterComponent
+ 
 }

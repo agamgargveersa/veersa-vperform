@@ -5,7 +5,6 @@ const PageTemplate = () => {
      <header className="bg-blue-500 text-white px-4 py-2  flex ">
        <img className='mx-2' src="" alt=""/>
    <h1 className="text-xl  font-bold text-left">Appraisal Cycle</h1>
-  
 </header>
 <main>
 {/* <AppraiseeView/> */}
