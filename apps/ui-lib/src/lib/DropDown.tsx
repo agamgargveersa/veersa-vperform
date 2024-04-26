@@ -57,7 +57,7 @@ const DropdownWithLabel: FC<DropdownWithLabelProps> = ({ options, height, width,
   const dropdownStyle = dropdownPosition === 'up' ? "origin-bottom-left bottom-full" : "origin-top-left top-full";
  
   return (
-    <div className={`relative inline-block text-left ${width} ${height}`} ref={dropdownRef}>
+    <div className={`z-20 relative inline-block text-left ${width} ${height}`} ref={dropdownRef}>
       <div>
         <span className="rounded-md shadow-sm">
           <button

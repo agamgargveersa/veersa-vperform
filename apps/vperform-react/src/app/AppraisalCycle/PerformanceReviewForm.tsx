@@ -90,9 +90,9 @@ const PerformanceReviewForm = () => {
         <div className='w-full flex flex-col items-start justify-evenly '> 
           <div>Past Engagement in 6 Months</div>
           {[1,2,3].map(()=>(
-            <div className='flex flex-row items-start justify-start gap-6 pl-6 w-full'>
-              <div className='w-full'><InputField width={'1/2'} label={'Project1'} placeholder={'Enter Project'}/></div>
-              <div className='w-full'><InputField width={'1/2'} label={'Project manager'} placeholder={'Enter Project manager'}/></div>
+            <div className='flex flex-row items-start justify-start  pl-6 w-1/2'>
+              <div className=' p-1 w-full flex flex-row items-center justify-start'><InputField width={'full'} label={'Project1'} placeholder={'Enter Project'}/></div>
+              <div className=' p-1 w-full flex flex-row items-center justify-start'><InputField width={'full'} label={'Project manager'} placeholder={'Enter Project manager'}/></div>
             </div>
           ))}         
           
@@ -100,7 +100,7 @@ const PerformanceReviewForm = () => {
         </div>
         <div className='text-theme-blue'>Add KRA</div>
         {[1,2,3,4].map((item,index)=>(
-          <div className=' my-4 rounded-lg border-[0.063rem] border-gray-200 p-5 gap-3 flex flex-col items-start justify-evenly'>
+          <div className=' my-4 rounded-lg border-[0.125rem] border-gray-200 p-5 gap-3 flex flex-col items-start justify-evenly'>
             <div className='flex flex-row items-center justify-start w-full'>
               <div className='py-2 w-1/2'>
                 <ToggleSwitch isChecked={isChecked} setIsChecked={setIsChecked} title={'KRA Name'} />
