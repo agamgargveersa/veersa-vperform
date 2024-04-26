@@ -39,7 +39,7 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
         setSelectedOption(currentPage)
       },[selectedOption,currentPath])
   return (
-    
+   
     <div className='fixed left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>
         <aside id="separator-sidebar" className="bg-theme-blue fixed top-0 left-1 rounded-lg  w-20 h-screen  block " aria-label="Sidebar">
             <div className='p-3 border-b border-gray-200 w-full flex items-center justify-center'><img src={logoVeersa}/></div>
@@ -89,7 +89,7 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
                     
                     
                 </ul>
-                <ul className="pt-3.5 mt-[45px]  font-medium border-t border-gray-200 dark:border-gray-700">
+                <ul className="pt-3.5 mt-[2.813rem]  font-medium border-t border-gray-200 dark:border-gray-700">
                     <li onClick={()=>setShowsidenav(false)} className='p-1'>
                         <p  className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                             Collapse

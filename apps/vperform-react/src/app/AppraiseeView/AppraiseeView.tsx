@@ -4,7 +4,7 @@ import { appraiseeView } from '../../assets/images'
 
 const AppraiseeView = () => {
   return (
-    <div className='ml-[84px] p-1'>
+    <div className='ml-[5.25rem] p-1'>
         <PageHeader title={"Appraisee View"} icon={appraiseeView} />
     </div>
   )

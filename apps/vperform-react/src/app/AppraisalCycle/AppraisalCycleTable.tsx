@@ -51,87 +51,9 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
   startDate:'20-June-2024',
   endDate:'20-June-2024',
   status: 'pending'
-},
-{
-  nameOfAppraisal:'Samarth',
-  startDate:'20-June-2024',
-  endDate:'20-June-2024',
-  status: 'pending'
-},]
+}]
 
-  const tableHead = [
-    {
-      headerName:"NAME OF THE APPRAISAL",
-      fontStyle:"mkm",
-      fontColour:"gray-500",
-      fontSize:"xs",
-      fontWeight:"medium",
-      paddingX:"6",
-      paddingY:"3",
-      align:"left",
-      letterSpacing:"wider"
-
-    },
-    {
-      headerName:"MANAGE APPRAISEES",
-      fontStyle:"",
-      fontColour:"gray-500",
-      fontSize:"xs",
-      fontWeight:"medium",
-      paddingX:"6",
-      paddingY:"3",
-      align:"left",
-      letterSpacing:"wider"
-
-    },
-    {
-      headerName:"START DATE",
-      fontStyle:"",
-      fontColour:"gray-500",
-      fontSize:"xs",
-      fontWeight:"medium",
-      paddingX:"6",
-      paddingY:"3",
-      align:"left",
-      letterSpacing:"wider"
-
-    },
-    {
-      headerName:"END DATE",
-      fontStyle:"",
-      fontColour:"gray-500",
-      fontSize:"xs",
-      fontWeight:"medium",
-      paddingX:"6",
-      paddingY:"3",
-      align:"left",
-      letterSpacing:"wider"
-
-    },
-    {
-      headerName:"STATUS",
-      fontStyle:"",
-      fontColour:"gray-500",
-      fontSize:"xs",
-      fontWeight:"medium",
-      paddingX:"6",
-      paddingY:"3",
-      align:"left",
-      letterSpacing:"wider"
-    },
-    {
-      headerName:"ACTIONS",
-      fontStyle:"",
-      fontColour:"gray-500",
-      fontSize:"xs",
-      fontWeight:"medium",
-      paddingX:"6",
-      paddingY:"3",
-      align:"left",
-      letterSpacing:"wider"
-
-    }
-  ]
+  
 
   const [showConfigAppraisalModal,setShowConfigAppraisalModal] = useState<boolean>(false);
   const [showPerformanceFormModal,setShowPerformanceFormModal] = useState<boolean>(false);
@@ -145,15 +67,15 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
   
   return (
 
-    <div className='p-1 overflow-hidden h-[550px]'>
+    <div className='p-1 overflow-hidden h-[34.375rem]'>
       <div className='flex flex-row items-center justify-between w-full py-1'>
         <SearchInput />
-        <div onClick={()=>setShowConfigAppraisalModal(true)} className='p-2 border-[2px] rounded-md border-theme-blue flex flex-row items-center'><img className=' pr-1' src={setting1} /><button>Configure Appraisal Cycle</button></div>
+        <div onClick={()=>setShowConfigAppraisalModal(true)} className='p-2 border-[0.125rem] rounded-md border-theme-blue flex flex-row items-center'><img className=' pr-1' src={setting1} /><button>Configure Appraisal Cycle</button></div>
       </div>
       <Modal innerJsx={<PageHeader icon={appraisalCycle} title={'mdgkm'} />} showModal = {showConfigAppraisalModal} setShowModal={setShowConfigAppraisalModal} logo={appraisalCycle} title='Configure Appraisal Cycle' content='frg' action='Done' />
       <Modal innerJsx = {<PerformanceReviewForm/>} logo={appraisalCycle} title='Performance Review Form Details' content='' action='Done' setShowModal={setShowPerformanceFormModal} showModal={showPerformanceFormModal}/>
       <ConfirmationPopUp showPopup={showPopup} setShowPopup={setShowPopup} />
-      <div className='h-[500px] overflow-auto'>
+      <div className={`h-${data.length===8?'h-fit':'[31.25rem]'} overflow-auto`}>
         <table className="min-w-full divide-y divide-gray-200 ">
           <thead className="bg-custom-table-header">
             <tr >
@@ -177,7 +99,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
               </th>
             </tr>
           </thead>
-          {data.length!==7?<tbody className="bg-white divide-y divide-gray-200 ">
+          {data.length!==8?<tbody className="bg-white divide-y divide-gray-200 ">
             {data.map((item,index)=>(
               <tr className=' bg-custom-table-row ' key={index}>
                 <td onClick={()=>setShowPerformanceFormModal(true)} className=" cursor-pointer px-6 py-4 whitespace-nowrap underline text-theme-blue">{item.nameOfAppraisal}</td>
@@ -197,11 +119,11 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
           </tbody>:null}
         </table>
       </div>
-        {data.length===7?<div className='text-center mt-40 flex flex-row items-center justify-center'>
+        {data.length===8?<div className='text-center mt-28 flex h-20 flex-row items-center justify-center'>
           <span className='h-12 w-12 rounded-full flex flex-row items-center justify-center  bg-slate-200'><img className='h-8 w-8 rounded-lg  ' src={noRecordsIcon} /></span>
           <span>No records available, configure appraisal cycle to initiate the process</span>
         </div>:null}
-      {/* <TableHeader tableHead = {tableHead} /> */}
+      
     </div>
   );
 }

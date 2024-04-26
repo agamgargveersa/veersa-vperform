@@ -24,6 +24,8 @@ import setting1 from './settings1.svg'
 import searchIcon from './search.svg'
 import filterIcon from './Filter.svg'
 import confirmIcon from './Confirmation.svg'
+import downArrow from './downArrow.svg' 
+import calendarIcon from './calendarIcon.svg'
 
 export{
     favIcon,
@@ -32,8 +34,10 @@ export{
     appraiseeView,
     editIcon,
     deleteIcon,
+    calendarIcon,
     closeIcon,
     home,
+    downArrow,
     showNav,
     settings,
     manageAppraisee,

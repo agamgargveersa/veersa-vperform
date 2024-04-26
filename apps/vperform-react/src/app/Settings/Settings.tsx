@@ -4,7 +4,7 @@ import { settings } from '../../assets/images'
 
 const Settings = () => {
   return (
-    <div className='ml-[84px] p-1'>
+    <div className='ml-[5.25rem] p-1'>
         <PageHeader title={"Settings"} icon={settings} />
     </div>
   )
