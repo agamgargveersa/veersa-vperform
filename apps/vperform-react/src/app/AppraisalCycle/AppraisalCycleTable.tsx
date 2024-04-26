@@ -3,6 +3,7 @@ import { appraisalCycle, deleteIcon, editIcon, manageAppraisee, noRecordsIcon, s
 import { useNavigate } from 'react-router-dom';
 import {  ConfirmationPopUp, Modal, PageHeader, SearchInput, TableHeader } from 'apps/ui-lib/src/lib';
 import PerformanceReviewForm from './PerformanceReviewForm';
+import ConfigurationForm from '../ConfigurationForm';
 
 interface Props{ 
   setSelectedOption:Function,// for navbar
@@ -150,7 +151,7 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
         <SearchInput />
         <div onClick={()=>setShowConfigAppraisalModal(true)} className='p-2 border-[2px] rounded-md border-theme-blue flex flex-row items-center'><img className=' pr-1' src={setting1} /><button>Configure Appraisal Cycle</button></div>
       </div>
-      <Modal innerJsx={<PageHeader icon={appraisalCycle} title={'mdgkm'} />} showModal = {showConfigAppraisalModal} setShowModal={setShowConfigAppraisalModal} logo={appraisalCycle} title='Configure Appraisal Cycle' content='frg' action='Done' />
+      <Modal innerJsx={<ConfigurationForm />} showModal = {showConfigAppraisalModal} setShowModal={setShowConfigAppraisalModal} logo={settings} title='Configure Appraisal Cycle' content='frg' action='Done' />
       <Modal innerJsx = {<PerformanceReviewForm/>} logo={appraisalCycle} title='Performance Review Form Details' content='' action='Done' setShowModal={setShowPerformanceFormModal} showModal={showPerformanceFormModal}/>
       <ConfirmationPopUp showPopup={showPopup} setShowPopup={setShowPopup} />
       <div className='h-[500px] overflow-auto'>

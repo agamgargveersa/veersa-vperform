@@ -1,23 +1,74 @@
 import InputField from 'apps/ui-lib/src/lib/InputField'
 import DropDown from 'apps/ui-lib/src/lib/DropDown'
+import attachIcon from '../assets/images/attachIcon.png'
 import edit from '../assets/images/edit.png'
-import { useState } from 'react'
+
+import { useEffect, useState } from 'react'
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+
+import DateRangePicker from 'apps/ui-lib/src/lib/DateRangePicker'
+
 import React from 'react'
 
 const ConfigurationForm = () => {
+
+    const [configurationFormData, setConfigurationFormData] = useState({
+        name: '',
+        description:'',
+        kra:false,
+        goals:false,
+        joinDateRadio:'',
+        rating:false,
+        comment:false,
+        lockRating:false,
+        ratingDescription1:'Outstanding',
+        ratingRange1:'5',
+        ratingDescription2:'Exceed Expectations',
+        ratingRange2:'4-5',
+        ratingDescription3:'Meets Expectations',
+        ratingRange3:'3-4',
+        ratingDescription4:'Partially Meets Expectations',
+        ratingRange4:'2-3',
+        ratingDescription5:'Below Expectations',
+        ratingRange5:'1-2',
+        instruction:''
+    });
+
+    const handleInputChange = (e:any) => {
+        console.log("event value",e.target.value)
+        const { name, value, type, checked } = e.target;
+        const newValue = type === 'checkbox' ? checked : value;
+
+        setConfigurationFormData((prevData) => ({
+          ...prevData,
+          [name]: newValue,
+        }));
+        console.log(configurationFormData)
+    };
+
+    //states for dropdowns
     const [stream, setStream] = useState<string|undefined>()
     const [job, setJob] = useState<string|undefined>()
     const [ratingType, setRatingType] = useState<string|undefined>()
-    const [rating,SetRating]=useState<string>('Outstanding')
-    const [value, setValue] = useState('');
 
-    const handleInputChange=(event:any)=>{
-        SetRating(event.target.value)
-    }
+    //for text editor
+    const [instruction, setInstruction] = useState('');
+
+    // State to store the uploaded file name
+    const [fileName, setFileName] = useState(''); 
+
+    const handleFileChange = (e:any) => {
+        const file = e.target.files[0]; 
+        if (file) {
+        setFileName(file.name);
+        } else {
+        setFileName('');
+        }
+    };
+
 
     const streamOptions=[{
         name:'xyz',
@@ -43,29 +94,58 @@ const ConfigurationForm = () => {
             id:'1',
         },
         {
-            name:'dhruv',
-            id:'1',
+            name:'dhruv2',
+            id:'2',
         },
     ]
   return (
     <>
-        <div className="container">
+        <div className="container mt-5">
             <div className="section pl-6">
                 <div className="flex w-full gap-6 mb-6">
                     <div className='w-[33%]'>
-                        <InputField id='name' label='Name of the appraisal *' width='full' placeholder='Enter'/>
+                        <InputField name='name' label='Name of the appraisal *' width='full' placeholder='Enter' 
+                           value={configurationFormData.name}
+                           handleInput={handleInputChange} />
                     </div>
                     <div className='w-[33%]'>
-                        <InputField label='Appraisal cycle period *' width='full' placeholder='Enter'/>
+                        {/* <DateRangePicker 
+                        />  */}
                     </div>
                 </div>
                 <div className="flex w-full gap-6">
                     <div className='w-[68.5%]'>
-                        <InputField id='description' label='Description *' height='16' width='full' placeholder='Enter Description'/>
+                        <InputField name='description' label='Description *' height='4.625rem' width='full' placeholder='Enter Description'
+                            value={configurationFormData.description}
+                            handleInput={handleInputChange}/>
                     </div>
                     <div className="w-[25%]">
-                        <InputField label='Name of the appraisal *' width='full' placeholder='Enter'/>
-                        <div className="upload-condition font-normal text-[0.875rem] pl-[5px]">Upload upto 10mb</div>
+                        <div className="relative w-full">
+                            {/* Hidden file input */}
+                            <input
+                                type="file"
+                                id="file-upload"
+                                onChange={handleFileChange}
+                                className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" // Hides the input and makes it clickable
+                            />
+
+                            {/* Styled visible part */}
+                            <div className="block px-2.5 pb-2.5 pt-4 text-sm text-gray-900 bg-transparent border border-gray-300 rounded-lg focus:outline-none focus:ring-0 focus:border-blue-600">
+                                <label
+                                htmlFor="file-upload"
+                                className={`absolute text-sm text-gray-500 transition-all duration-300 transform -translate-y-4 scale-75 
+                                            top-2 z-10 origin-[0] bg-white px-2 
+                                            ${fileName ? 'peer-focus:top-2 peer-focus:scale-75' : 'peer-placeholder-shown:top-1/2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2'}`}
+                                >
+                                    Guideline Document 
+                                </label>
+                                <span className='flex justify-between overflow-hidden'>
+                                    {!fileName ? <span className="opacity-50">Browse</span> : <span className='truncate'>{fileName}</span>} 
+                                    <img className='mt-[5px] h-[0.75rem]' src={attachIcon} />
+                                </span>
+                            </div>
+                        </div>
+                        <div className="upload-condition font-normal text-[0.875rem] pl-[5px]">Upload upto 10mb</div> 
                     </div>
                 </div>
             </div>
@@ -93,12 +173,18 @@ const ConfigurationForm = () => {
                     </div>
                     <div className="flex">
                         <div className="flex items-center me-4">
-                            <input id="inline-checkbox" type="checkbox" value="kra" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                            <label htmlFor="inline-checkbox" className="ms-2 text-sm text-gray-900 dark:text-gray-300">KRA</label>
+                            <input name="kra" type="checkbox" id="kra"
+                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                checked={configurationFormData.kra}
+                                onChange={handleInputChange}/>
+                            <label htmlFor="kra" className="ms-2 text-sm text-gray-900 dark:text-gray-300">KRA</label>
                         </div>
                         <div className="flex items-center me-4">
-                            <input id="inline-2-checkbox" type="checkbox" value="goals" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                            <label htmlFor="inline-2-checkbox" className="ms-2 text-sm text-gray-900 dark:text-gray-300">Goals</label>
+                            <input name="goals" type="checkbox" id="goals"
+                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                checked={configurationFormData.goals}
+                                onChange={handleInputChange}/>
+                            <label htmlFor="goals" className="ms-2 text-sm text-gray-900 dark:text-gray-300">Goals</label>
                         </div>
                     </div>   
                 </div>
@@ -116,24 +202,35 @@ const ConfigurationForm = () => {
                     </div>
                     <div className="flex mb-6">
                         <div className="flex items-center me-4">
-                            <input id="inline-radio" type="radio" value="" name="inline-radio-group" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                            <label htmlFor="inline-radio" className="font-normal ms-2 text-sm text-gray-900 dark:text-gray-300">Until</label>
+                            <input id="join-date-radio" type="radio" value="until" 
+                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                name="joinDateRadio" 
+                                onChange={handleInputChange}
+                            />
+                            <label htmlFor="join-date-radio" className="font-normal ms-2 text-sm text-gray-900 dark:text-gray-300">Until</label>
                         </div>
                         <div className="flex items-center me-4">
-                            <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                            <label htmlFor="inline-2-radio" className="font-normal ms-2 text-sm text-gray-900 dark:text-gray-300">From & To</label>
+                            <input id="join-date-radio-2" type="radio" value="fromTo" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                name="joinDateRadio"
+                                onChange={handleInputChange}
+                            />
+                            <label htmlFor="join-date-radio-2" className="font-normal ms-2 text-sm text-gray-900 dark:text-gray-300">From & To</label>
                         </div>
                     </div>
-                    <InputField label='Name of the appraisal *' width='1/2' placeholder='Enter'/>
+                    <InputField name='' label='Name of the appraisal *' width='1/2' placeholder='Enter'/>
                 </div>
                 <div className="mt-6 flex gap-6">
                     <div className='flex w-1/4'>
                         <DropDown label="Stream" onChange={setStream} 
-                            options={streamOptions} width="w-full" defaultValue="Select Stream"/>
+                            options={streamOptions} width="w-full" defaultValue="Select Stream"
+                            value={stream}
+                        />
                     </div>
                     <div className='flex w-1/4'>
                         <DropDown label="Job title" onChange={setJob} 
-                            options={jobOptions} width="w-full" defaultValue="Select Job Title"/>
+                            options={jobOptions} width="w-full" defaultValue="Select Job Title"
+                            value={job}
+                        />
                     </div>
                 </div>  
             </div>
@@ -143,8 +240,11 @@ const ConfigurationForm = () => {
             <div className="section pl-6">
                 <div className='flex gap-6'>
                     <div className="w-1/4">
-                        <DropDown label="Choose rating type" onChange={setRatingType} 
-                            options={ratingTypeOptions} width="w-full" defaultValue="Rating type"/>
+                        <DropDown label="Choose rating type" width="w-full" defaultValue="Rating type"
+                            options={ratingTypeOptions}
+                            onChange={setRatingType}
+                            value={ratingType} 
+                        />
                     </div>
                     <div className="checkbox-container">
                         <div className='font-semibold text-sm'>
@@ -152,12 +252,18 @@ const ConfigurationForm = () => {
                         </div>
                         <div className="flex">
                             <div className="flex items-center me-4">
-                                <input id="inline-checkbox" type="checkbox" value="rating" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                                <label htmlFor="inline-checkbox" className="ms-2 text-sm text-gray-900 dark:text-gray-300">Rating</label>
+                                <input id="mandatory-checkbox-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                   name="rating"
+                                   checked={configurationFormData.rating} 
+                                   onChange={handleInputChange}/>
+                                <label htmlFor="mandatory-checkbox-1" className="ms-2 text-sm text-gray-900 dark:text-gray-300">Rating</label>
                             </div>
                             <div className="flex items-center me-4">
-                                <input id="inline-2-checkbox" type="checkbox" value="comment" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                                <label htmlFor="inline-2-checkbox" className="ms-2 text-sm text-gray-900 dark:text-gray-300">Comment</label>
+                                <input id="mandatory-checkbox-2" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    name="comment"
+                                    checked={configurationFormData.comment} 
+                                    onChange={handleInputChange}/>
+                                <label htmlFor="mandatory-checkbox-2" className="ms-2 text-sm text-gray-900 dark:text-gray-300">Comment</label>
                             </div>
                         </div>
                     </div>
@@ -176,34 +282,88 @@ const ConfigurationForm = () => {
                     the manual edit, enable Lock rating option 
                 </div>
                 <div className="flex items-center me-4 mt-6 mb-6">
-                    <input id="lockRating" type="checkbox" value="lockRating" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <input id="lockRating" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        name="lockRating"
+                        checked={configurationFormData.lockRating}
+                        onChange={handleInputChange}
+                    />
                     <label htmlFor="lockRating" className="ms-2 text-sm text-gray-900 dark:text-gray-300">Lock Rating</label>
                 </div>
                 <div className="rating-container">
                     <div className='mb-[14px] bg-[#F9F9F9] flex border border-[#BAC1DA] rounded-sm font-normal text-sm px-6 py-3.5 w-[60%] rounded-sm gap-3'>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' value={rating} onChange={handleInputChange}/>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' value='5'/>
-                        <img src={edit} className='h-[0.85rem] self-center'/>
+                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingDescription1"
+                            value={configurationFormData.ratingDescription1} 
+                            onChange={handleInputChange}
+                        />
+                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingRange1"
+                            value={configurationFormData.ratingRange1} 
+                            onChange={handleInputChange}
+                        />
+                        {!configurationFormData.lockRating && <img src={edit} className='h-[0.85rem] self-center'/>}
                     </div>
                     <div className='mb-[14px] bg-[#F9F9F9] flex border border-[#BAC1DA] rounded-sm font-normal text-sm px-6 py-3.5 w-[60%] rounded-sm gap-3'>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' value="Exceed Expectations"/>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' value='4-5'/>
-                        <img src={edit} className='h-[0.85rem] self-center'/>
+                    <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingDescription2"
+                            value={configurationFormData.ratingDescription2} 
+                            onChange={handleInputChange}
+                        />
+                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingRange2"
+                            value={configurationFormData.ratingRange2} 
+                            onChange={handleInputChange}
+                        />
+                        {!configurationFormData.lockRating && <img src={edit} className='h-[0.85rem] self-center'/>}
                     </div>
                     <div className='mb-[14px] bg-[#F9F9F9] flex border border-[#BAC1DA] rounded-sm font-normal text-sm px-6 py-3.5 w-[60%] rounded-sm gap-3'>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' value="Meets Expectations"/>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' value='3-4'/>
-                        <img src={edit} className='h-[0.85rem] self-center'/>
+                    <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingDescription3"
+                            value={configurationFormData.ratingDescription3} 
+                            onChange={handleInputChange}
+                        />
+                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingRange3"
+                            value={configurationFormData.ratingRange3} 
+                            onChange={handleInputChange}
+                        />
+                        {!configurationFormData.lockRating && <img src={edit} className='h-[0.85rem] self-center'/>}
                     </div>
                     <div className='mb-[14px] bg-[#F9F9F9] flex border border-[#BAC1DA] rounded-sm font-normal text-sm px-6 py-3.5 w-[60%] rounded-sm gap-3'>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' value="Partially Meets Expectations"/>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' value='2-3'/>
-                        <img src={edit} className='h-[0.85rem] self-center'/>
+                    <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingDescription4"
+                            value={configurationFormData.ratingDescription4} 
+                            onChange={handleInputChange}
+                        />
+                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingRange4"
+                            value={configurationFormData.ratingRange4} 
+                            onChange={handleInputChange}
+                        />
+                        {!configurationFormData.lockRating && <img src={edit} className='h-[0.85rem] self-center'/>}
                     </div>
                     <div className='mb-[14px] bg-[#F9F9F9] flex border border-[#BAC1DA] rounded-sm font-normal text-sm px-6 py-3.5 w-[60%] rounded-sm gap-3'>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' value="Below Expectations"/>
-                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' value='1-2'/>
-                        <img src={edit} className='h-[0.85rem] self-center'/>
+                    <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[80%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingDescription5"
+                            value={configurationFormData.ratingDescription5} 
+                            onChange={handleInputChange}
+                        />
+                        <input className='p-[5px] bg-[#F9F9F9] font-semibold text-base w-[10%] rounded-sm' 
+                            disabled={configurationFormData.lockRating}
+                            name="ratingRange5"
+                            value={configurationFormData.ratingRange5} 
+                            onChange={handleInputChange}
+                        />
+                        {!configurationFormData.lockRating && <img src={edit} className='h-[0.85rem] self-center'/>}
                     </div>
                 </div>
             </div>
@@ -214,7 +374,10 @@ const ConfigurationForm = () => {
                 <label htmlFor="quill-editor" className="font-medium text-md">
                     Instructions and guidelines <span className="text-[red]">*</span>
                 </label>
-                <ReactQuill id='quill-editor' theme="snow" value={value} onChange={setValue} />
+                <ReactQuill id='quill-editor' theme="snow" 
+                    
+                    value={instruction} 
+                    onChange={setInstruction} />
             </div>
 
         </div>
