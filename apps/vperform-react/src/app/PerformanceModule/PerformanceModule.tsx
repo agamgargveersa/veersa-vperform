@@ -3,21 +3,23 @@ import {
   SearchInput,
   ConfirmationPopUp,
   Modal,
+  ToggleSwitch,
 } from 'apps/ui-lib/src/lib';
 import React, { useState } from 'react';
 import {
   performance,
-  setting1,
-  cross,
   filterIcon,
   noRecordsIcon,
-  manageAppraisee,
   editIcon,
   deleteIcon,
+  plusIcon,
 } from '../../assets/images';
+import KRAForm from './KRAForm';
 
 const PerformanceModule = () => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [showKRAModal, setShowKRAModal] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   const KRA_Data = [
     {
       name: 'Result Orientation',
@@ -82,22 +84,30 @@ const PerformanceModule = () => {
             style={{ height: 'fit-content' }}
           >
             {/* <img className="pr-1" src={editIcon} alt="" /> */}
-            <button className="text-center py-1 border-[2px] px-3 rounded-sm border-theme-blue">
+            <button className="flex flex-row text-center py-1 border-[2px] px-3 rounded-sm border-theme-blue">
+              <img className="pr-3 pb-1 h-8 w-8" src={plusIcon} alt="" />
               Add new Module
             </button>
           </div>
           <div className="ml-10 py-5 text-center flex justify-center border-y-2 border-gray-200 font-sans">
             Performance Module
           </div>
-          <div className="py-5">
-            <ul className="my-2">
-              <li className="flex justfiy-center">
-                <p className="text-black">KRA</p>
-              </li>
-              <li className="flex justfiy-center">
-                <p className="text-black hover:bg-blue">Goals</p>
-              </li>
-            </ul>
+          <div className="py-2">
+              <div className="ml-[5.2rem] py-2 w-[75%] text-blue-500">
+                <ToggleSwitch
+                  isChecked={isChecked}
+                  setIsChecked={setIsChecked}
+                  title={'KRA'}
+                />
+              </div>
+              <div className="ml-[5.2rem] py-2 w-[75%] text-blue-500">
+                <ToggleSwitch
+                  isChecked={isChecked}
+                  setIsChecked={setIsChecked}
+                  title={'Goals'}
+                  
+                />
+              </div>
           </div>
         </div>
 
@@ -118,8 +128,8 @@ const PerformanceModule = () => {
               <SearchInput />
               <div className="flex flex-row justify-evenly">
                 <img
-                  className="px-3 border-[0.125rem] border-gray-200"
-                  src={editIcon}
+                  className="py-3 px-2 h-12 w-12 border-[0.125rem] border-gray-200"
+                  src={plusIcon}
                   alt=""
                 />
                 <img
@@ -128,9 +138,23 @@ const PerformanceModule = () => {
                   alt=""
                 />
                 <div className="flex flex-row border-[2px] px-3 rounded-sm border-theme-blue">
-                  <img className="pr-1" src={editIcon} alt="" />
-                  <button className="text-center py-1">Add new KRA</button>
+                  <img className="pr-1 mt-3 h-5 w-5" src={plusIcon} alt="" />
+                  <button
+                    onClick={() => setShowKRAModal(true)}
+                    className="text-center py-1"
+                  >
+                    Add new KRA
+                  </button>
                 </div>
+                <Modal
+                  innerJsx={<KRAForm />}
+                  logo={performance}
+                  title="Add/Update KRA"
+                  content=""
+                  action="Done"
+                  setShowModal={setShowKRAModal}
+                  showModal={showKRAModal}
+                />
               </div>
             </div>
             <div

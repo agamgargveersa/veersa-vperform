@@ -26,6 +26,7 @@ import filterIcon from './Filter.svg'
 import confirmIcon from './Confirmation.svg'
 import downArrow from './downArrow.svg' 
 import calendarIcon from './calendarIcon.svg'
+import plusIcon from './plusIcon.svg'
 
 export{
     favIcon,
@@ -55,6 +56,6 @@ export{
     confirm,
     cross,
     remove,
-    membersIcon
-
+    membersIcon,
+    plusIcon
 }
