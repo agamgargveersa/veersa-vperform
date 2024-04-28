@@ -101,8 +101,8 @@ const AppraisalCycleTable = ({setSelectedOption,setManageAppraiseeListClicked}:P
       </div>
       <Modal innerJsx={<ConfigurationForm />} showModal = {showConfigAppraisalModal} setShowModal={setShowConfigAppraisalModal} logo={settings} title='Configure Appraisal Cycle' content='frg' action='Done' />
       <Modal innerJsx = {<PerformanceReviewForm/>} logo={appraisalCycle} title='Performance Review Form Details' content='' action='Done' setShowModal={setShowPerformanceFormModal} showModal={showPerformanceFormModal}/>
-      <ConfirmationPopUp showPopup={showPopup} setShowPopup={setShowPopup} />
-      <div className={`${data.length===0?'h-fit':'h-[31.25rem]'}  overflow-auto`}>
+      <ConfirmationPopUp  />
+      <div className='h-[500px] overflow-auto'>
         <table className="min-w-full divide-y divide-gray-200 ">
           <thead className="bg-custom-table-header">
             <tr >
