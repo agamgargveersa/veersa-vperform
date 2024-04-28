@@ -39,20 +39,20 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
         setSelectedOption(currentPage)
       },[selectedOption,currentPath])
   return (
-   <div>
-        <div className='fixed left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>
-            <aside id="separator-sidebar" className="bg-theme-blue fixed top-0 left-1 rounded-lg  w-20 h-screen  block " aria-label="Sidebar">
-                <div className='p-3 border-b border-gray-200 w-full flex items-center justify-center'><img src={logoVeersa}/></div>
-                <div className="h-full px-3 py-4  ">
-                    
-                    <ul className="space-y-2 font-medium flex flex-col items-center mt-10">
-                        {navElements.map((item,index)=>(
-                            <li key={index} className={`p-1 rounded-md hover:bg-gray-700  ${selectedOption===item.to?' bg-gray-50 bg-opacity-50':'bg-none'}`}>
-                                <p onClick={()=>{nav(item.to,item.title)}} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white  group">
-                                    <img src={item.logo} />
-                                </p>
-                            </li>
-                        ))}
+   
+    <div className='fixed left-1 w-full z-40 bg-black bg-opacity-50 flex flex-row overflow-hidden'>
+        <aside id="separator-sidebar" className="bg-theme-blue fixed top-0 left-1 rounded-lg  w-20 h-screen  block " aria-label="Sidebar">
+            <div className='p-3 border-b border-gray-200 w-full flex items-center justify-center'><img src={logoVeersa}/></div>
+            <div className="h-full px-3 py-4  ">
+                
+                <ul className="space-y-2 font-medium flex flex-col items-center mt-10">
+                    {navElements.map((item,index)=>(
+                        <li key={index} className={`p-1 rounded-md hover:bg-gray-700  ${selectedOption===item.to?' bg-gray-50 bg-opacity-50':'bg-none'}`}>
+                            <p onClick={()=>{nav(item.to,item.title)}} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white  group">
+                                <img src={item.logo} />
+                            </p>
+                        </li>
+                    ))}
 
                     </ul>
                     <ul className="pt-4 mt-12 pace-y-2 font-medium  border-t {{ showsidenav ? 'border-none' : 'border-t' }}  border-gray-200 dark:border-gray-700">
@@ -105,7 +105,7 @@ const Navbar = ({selectedOption,setSelectedOption}:Props) => {
             </div>:null}
             
         </div>
-    </div>
+    // </div>
     )
 }
 

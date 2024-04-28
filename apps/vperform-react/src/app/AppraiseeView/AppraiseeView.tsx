@@ -13,9 +13,7 @@ const AppraiseeView = () => {
     setActiveTab(tab);
   };
   return (
-    
-    <div className='ml-[84px] p-1'>
-      {/* <RejectionFeedback/> */}
+    <div className='ml-[5.25rem] p-1'>
         <PageHeader title={"Appraisee View"} icon={appraiseeView} />
         <div className="flex border-b border-gray-200 mt-5">
         <button

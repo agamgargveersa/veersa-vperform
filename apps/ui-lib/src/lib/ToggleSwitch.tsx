@@ -16,7 +16,7 @@ const ToggleSwitch = ({isChecked,setIsChecked,title}:Props) => {
 
   return (
 
-      <span className='border-[0.063rem] p-2 mt-1 rounded-md flex flex-row items-center justify-between'>
+      <span className='border-[0.063rem] p-2 mt-1 flex flex-row items-center justify-between'>
           <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300 px-2">{title}</span>
           <label className="inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" className="sr-only peer" />
