@@ -1,4 +1,4 @@
-import {logoVeersa,appraisalCycle,appraiseeView,home,showNav,settings,performance,collapse,logout,fullVeersaLogo} from '../assets/images'
+import {logoVeersa,appraisalCycle,appraiseeView,home,showNav,settings,performance,collapse,logout,fullVeersaLogo} from '../../assets/images'
 import { useEffect, useState } from 'react'
 import { To, useNavigate } from 'react-router-dom'
 

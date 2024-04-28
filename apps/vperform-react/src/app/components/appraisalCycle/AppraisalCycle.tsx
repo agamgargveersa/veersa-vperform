@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { deleteIcon, editIcon, manageAppraisee, noRecordsIcon } from '../assets/images';
+import { deleteIcon, editIcon, manageAppraisee, noRecordsIcon } from '../../../assets/images';
 import { useNavigate } from 'react-router-dom';
 import { Modal, TableHeader } from 'apps/ui-lib/src/lib';
 

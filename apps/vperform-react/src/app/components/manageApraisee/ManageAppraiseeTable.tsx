@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { sampleProfilePic } from '../assets/images';
+import { sampleProfilePic } from '../../../assets/images';
 
 const ManageAppraiseeList: React.FC = () => {
   const [selectAll, setSelectAll] = useState(false);

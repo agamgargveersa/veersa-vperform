@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {logoVeersa,appraisalCycle,appraiseeView,home,showNav,settings,performance,collapse,logout,fullVeersaLogo} from '../assets/images'
-import Navbar from './Navbar';
+import Navbar from './sideNavbar/Navbar';
 import {ConfirmationPopUp,PageTemplate} from '../../../ui-lib/src/lib/index'
 import {PageHeader} from '../../../ui-lib/src/lib/index'
-import ManageAppraiseeList from './ManageAppraiseeTable';
-import AppraisalCycle from './AppraisalCycle';
+import ManageAppraiseeList from './components/manageApraisee/ManageAppraiseeTable';
+import AppraisalCycle from './components/appraisalCycle/AppraisalCycle';
 import { useState } from 'react';
 export function App() {
 
